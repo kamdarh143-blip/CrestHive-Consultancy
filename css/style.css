@@ -176,7 +176,7 @@ a {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 600px;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -762,4 +762,40 @@ a {
 .btn-full {
     width: 100%;
     padding: 12px;
+}
+
+@media (max-width: 576px) {
+    .logo img {
+        height: 45px !important;
+    }
+    .nav-actions {
+        gap: 8px !important;
+    }
+    .nav-actions .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    .nav-actions a[title="My Profile"] {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    .nav-actions a[title="My Profile"] svg {
+        width: 16px;
+        height: 16px;
+    }
+    .nav-container {
+        padding: 0 10px;
+    }
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 80px 0 40px 0;
+    }
+    .hero-title {
+        font-size: 32px;
+    }
+    .hero-subtitle {
+        font-size: 16px;
+    }
 }
