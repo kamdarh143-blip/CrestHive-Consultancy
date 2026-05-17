@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | CrestHive Consultancy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .profile-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .profile-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        .profile-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .profile-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 6px;
+        }
+        .profile-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-family: 'Outfit', sans-serif;
+        }
+        tr:hover {
+            background-color: var(--bg-light);
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        #loginSection {
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .settings-form {
+            max-width: 500px;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: var(--text-color); }
+        .form-group input {
+            width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; background-color: var(--bg-light);
+        }
+        #adminRedirect {
+            display: none;
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #ffcdd2;
+        }
+    </style>
+</head>
+<body style="background-color: #f0f2f5;">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <img src="assets/logo_square.png" alt="CrestHive Consultancy" style="height: 85px; width: auto; object-fit: contain;">
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="btn btn-outline">Back to Website</a>
+                <button id="btnLogout" class="btn btn-primary" style="display: none;">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="loginSection" class="profile-card">
+        <h2 style="margin-bottom: 10px; font-family: 'Outfit', sans-serif;">User Login</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">Sign in to view your property enquiries and manage your account.</p>
+        <button id="btnUserLogin" class="btn btn-outline btn-full">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="G" style="width: 18px; margin-right: 8px;"> Sign in with Google
+        </button>
+    </div>
+
+    <div id="dashboardSection" style="display: none;">
+        <div class="profile-header">
+            <h1 style="font-family: 'Outfit', sans-serif;">My Profile</h1>
+            <p>Welcome back, <span id="userName">User</span></p>
+        </div>
+
+        <div class="profile-container">
+            
+            <div id="adminRedirect">
+                <p style="margin-bottom: 10px; font-weight: 600;">You are logged in as an Administrator.</p>
+                <a href="admin.html" class="btn btn-primary">Go to Admin Dashboard</a>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-tabs">
+                    <div class="profile-tab active" id="tabEnquiries">My Enquiries</div>
+                    <div class="profile-tab" id="tabDownloads">My Downloaded Projects</div>
+                    <div class="profile-tab" id="tabSettings">Account Settings</div>
+                    <div class="profile-tab" id="tabManual">User Manual</div>
+                </div>
+
+                <!-- ENQUIRIES SECTION -->
+                <div id="sectionEnquiries">
+                    <h2 style="margin-bottom: 15px;">Your Property Enquiries</h2>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Project / Subject</th>
+                                    <th>Visit Type</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="enquiriesTableBody">
+                                <tr><td colspan="4" style="text-align: center; padding: 30px;">Loading your enquiries...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SETTINGS SECTION -->
+                <div id="sectionSettings" style="display: none;">
+                    <h2 style="margin-bottom: 15px;">Account Settings</h2>
+                    <form id="settingsForm" class="settings-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="settingName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="settingEmail" disabled style="background-color: #e0e0e0;">
+                            <small style="color: var(--text-muted); font-size: 11px;">Email cannot be changed.</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" id="settingPhone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="settingAddress" placeholder="Enter your address">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btnSaveProfile">Save Profile</button>
+                    </form>
+                </div>
+
+                <!-- DOWNLOADS SECTION -->
+                <div id="sectionDownloads" style="display: none;">
+                    <h2 style="margin-bottom: 15px;">My Downloaded Projects</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Projects you have downloaded brochures for will appear here.</p>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Project Name</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="downloadsTableBody">
+                                <tr><td colspan="3" style="text-align: center; padding: 30px; color: var(--text-muted);">No downloaded projects yet.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- MANUAL SECTION -->
+                <div id="sectionManual" style="display: none;">
+                    <h2 style="margin-bottom: 15px;">User Manual</h2>
+                    <div style="line-height: 1.6; color: var(--text-color);">
+                        <h3 style="margin-top: 15px; color: var(--primary-dark);">How to use your Profile</h3>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li><strong>My Enquiries:</strong> View all the properties you have inquired about along with their current status.</li>
+                            <li><strong>My Downloaded Projects:</strong> Access all project brochures you have previously downloaded from our portal.</li>
+                            <li><strong>Account Settings:</strong> Update your personal information such as name, phone number, and address.</li>
+                        </ul>
+                        <h3 style="margin-top: 15px; color: var(--primary-dark);">Admin Features (Admins Only)</h3>
+                        <p style="margin-bottom: 15px;">If you are an administrator, you will see a banner redirecting you to the Admin Panel where you can add, edit, or delete projects and view all user leads.</p>
+                        <h3 style="margin-top: 15px; color: var(--primary-dark);">Need Help?</h3>
+                        <p>Contact our support team at <a href="mailto:cresthiveconsultancy@gmail.com">cresthiveconsultancy@gmail.com</a>.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/profile.js"></script>
+</body>
+</html>

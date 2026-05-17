@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | CrestHive Consultancy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .admin-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        .admin-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .admin-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 6px;
+        }
+        .admin-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-family: 'Outfit', sans-serif;
+        }
+        tr:hover {
+            background-color: var(--bg-light);
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        #loginSection {
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        /* Modal */
+        .admin-modal {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1000;
+            justify-content: center; align-items: center;
+        }
+        .admin-modal-content {
+            background: white; padding: 30px; border-radius: 12px;
+            width: 100%; max-width: 500px;
+            max-height: 90vh; overflow-y: auto;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px;
+        }
+        .btn-danger { background: #d32f2f; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+        .btn-edit { background: #1976d2; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body style="background-color: #f0f2f5;">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <img src="assets/logo_square.png" alt="CrestHive Consultancy" style="height: 85px; width: auto; object-fit: contain;">
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="btn btn-outline">Back to Website</a>
+                <button id="btnLogout" class="btn btn-primary" style="display: none;">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="loginSection" class="admin-card">
+        <h2 style="margin-bottom: 10px; font-family: 'Outfit', sans-serif;">Admin Login</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">Please sign in with your administrator Google account.</p>
+        <button id="btnAdminLogin" class="btn btn-outline btn-full">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="G" style="width: 18px; margin-right: 8px;"> Sign in with Google
+        </button>
+        <div id="loginError" style="color: red; margin-top: 15px; font-size: 13px; display: none;"></div>
+    </div>
+
+    <div id="dashboardSection" style="display: none;">
+        <div class="admin-header">
+            <h1 style="font-family: 'Outfit', sans-serif;">Admin Dashboard</h1>
+            <p>Welcome, <span id="adminName">Admin</span></p>
+        </div>
+
+        <div class="admin-container">
+            <div class="admin-card">
+                <div class="admin-tabs">
+                    <div class="admin-tab active" id="tabLeads">Leads Management</div>
+                    <div class="admin-tab" id="tabProjects">Projects Management</div>
+                </div>
+
+                <!-- LEADS SECTION -->
+                <div id="sectionLeads">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h2>Captured Leads</h2>
+                        <div>
+                            <button class="btn btn-outline" id="btnExportCSV" style="margin-right: 10px;">Download CSV</button>
+                            <button class="btn btn-primary" id="btnRefreshLeads">Refresh Data</button>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Project / Inquiry</th>
+                                    <th>Visit Type</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                <tr><td colspan="6" style="text-align: center; padding: 30px;">Loading leads data...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PROJECTS SECTION -->
+                <div id="sectionProjects" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h2>All Properties</h2>
+                        <div>
+                            <button class="btn btn-primary" id="btnRefreshProjects" style="margin-right: 10px;">Refresh</button>
+                            <button class="btn btn-outline" id="btnAddProject">+ Add Project</button>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                    <th>Location</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectsTableBody">
+                                <tr><td colspan="7" style="text-align: center; padding: 30px;">Loading projects...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="admin-modal" id="projectModal">
+        <div class="admin-modal-content">
+            <h2 id="modalTitle" style="margin-bottom: 20px;">Add New Project</h2>
+            <form id="projectForm">
+                <input type="hidden" id="projId">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="projTitle" required placeholder="e.g. Dosti 604">
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" id="projPrice" required placeholder="e.g. ₹ 1.46 Cr - 2.40 Cr">
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="projLocation" required placeholder="e.g. Wagle Estate, Thane">
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="text" id="projImage" required placeholder="https://...">
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>BHK</label>
+                        <input type="text" id="projBhk" required placeholder="e.g. 2, 3">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Sqft/Area</label>
+                        <input type="text" id="projSqft" required placeholder="e.g. Premium">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Status</label>
+                        <input type="text" id="projStatus" required placeholder="e.g. New Launch">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Type</label>
+                        <select id="projType" required>
+                            <option value="buy">Buy</option>
+                            <option value="project">Project</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" class="btn btn-outline btn-full" id="btnCancelModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-full">Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

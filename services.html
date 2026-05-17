@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | CrestHive Consultancy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        .service-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        .service-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <img src="assets/logo_square.png" alt="CrestHive Consultancy" style="height: 85px; width: auto; object-fit: contain;">
+            </a>
+            <nav class="nav-links">
+                <a href="projects.html">All Projects</a>
+                <a href="buy.html">Buy</a>
+                <a href="services.html">Services</a>
+            </nav>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 15px;">
+                <a href="#contact" class="btn btn-outline">Talk To Our Advisor</a>
+                <a href="admin.html" title="Admin / Profile" style="text-decoration: none; color: var(--primary-dark); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f0f2f5;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- DISTINCT HERO BANNER -->
+    <div class="hero-sm" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/hero_bg_1778980915665.png');">
+        <div class="container text-center">
+            <h1>Our Premium Services</h1>
+            <p style="font-size: 18px; margin-top: 10px;">Comprehensive real estate solutions tailored to your unique needs.</p>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <section class="section container">
+        <div class="section-header text-center">
+            <h2>What We Offer</h2>
+            <p>From buying your first home to managing a sprawling portfolio, our experts are here to guide you.</p>
+        </div>
+        
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3 class="service-title">Property Buying</h3>
+                <p class="service-desc">We help you discover exclusive premium listings, negotiate the best prices, and handle the paperwork effortlessly. Zero brokerage on new developments.</p>
+            </div>
+            
+            
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3 class="service-title">Investment Advisory</h3>
+                <p class="service-desc">Maximize your ROI with data-driven insights. Our team identifies high-growth potential areas and pre-launch projects to secure the best early-bird deals.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3 class="service-title">Property Management</h3>
+                <p class="service-desc">Own a property but live abroad? Let us manage your asset. We handle tenant sourcing, rent collection, and maintenance issues on your behalf.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo" style="text-decoration: none; display: inline-block; background: white; padding: 10px; border-radius: 8px;">
+                    <img src="assets/logo_square.png" alt="CrestHive Consultancy" style="height: 65px; width: auto; object-fit: contain;">
+                </a>
+                <p class="mt-2 text-gray">CrestHive Consultancy. Mumbai’s Finest & Leading real estate advisory firm.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>📞 +91 95940 63034</li>
+                    <li>✉️ cresthiveconsultancy@gmail.com</li>
+                </ul>
+                <div class="social-links" style="margin-top: 20px; display: flex; gap: 15px;">
+                    <a href="https://www.instagram.com/cresthiveconsultancy?igsh=dzd5aW9lZ3lwaW9h&utm_source=qr" target="_blank" style="color: white; text-decoration: none; font-size: 20px;" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/share/14bRqmc1WEP/?mibextid=wwXIfr" target="_blank" style="color: white; text-decoration: none; font-size: 20px;" title="Facebook">📘</a>
+                    <a href="https://x.com/cresthive?s=21" target="_blank" style="color: white; text-decoration: none; font-size: 20px;" title="X (Twitter)">𝕏</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js?v=4"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

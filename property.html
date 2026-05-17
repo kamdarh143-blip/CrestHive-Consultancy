@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details | CrestHive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .prop-header { background: var(--primary-dark); color: white; padding: 40px 0; }
+        .prop-title { font-family: 'Outfit', sans-serif; font-size: 32px; margin-bottom: 10px; }
+        .prop-meta { display: flex; gap: 20px; font-size: 14px; opacity: 0.9; }
+        .sub-nav { position: sticky; top: 0; background: white; z-index: 100; border-bottom: 1px solid var(--border-color); padding: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .sub-nav a { margin-right: 20px; color: var(--text-main); font-weight: 500; text-decoration: none; transition: color 0.2s; }
+        .sub-nav a.active { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 15px; }
+        .prop-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+        @media (max-width: 768px) { .prop-layout { grid-template-columns: 1fr; } }
+        .prop-section { padding: 40px 0; border-bottom: 1px solid var(--border-color); }
+        .prop-section h3 { font-family: 'Outfit', sans-serif; font-size: 24px; margin-bottom: 20px; color: var(--primary-dark); }
+        .sticky-sidebar { position: sticky; top: 80px; background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; box-shadow: var(--shadow-lg); }
+        .sticky-sidebar h4 { font-size: 18px; margin-bottom: 15px; }
+        .emi-box { background: var(--bg-light); padding: 20px; border-radius: 8px; margin-top: 15px; border: 1px solid #e0e0e0; }
+        .emi-result { font-size: 24px; font-weight: 700; color: var(--primary-color); margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .amenity-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+        @media (max-width: 768px) { .amenity-grid { grid-template-columns: 1fr 1fr; } }
+        .amenity-item { display: flex; align-items: center; gap: 10px; background: white; padding: 10px; border-radius: 6px; border: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <img src="assets/logo_square.png" alt="CrestHive Consultancy" style="height: 85px; width: auto; object-fit: contain;">
+            </a>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 15px;">
+                <a href="#contact" class="btn btn-outline">Talk To Our Advisor</a>
+                <a href="admin.html" title="Admin / Profile" style="text-decoration: none; color: var(--primary-dark); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f0f2f5;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="projects.html">All Projects</a>
+                <a href="buy.html">Buy</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="prop-header">
+        <div class="container">
+            <h1 class="prop-title" id="pTitle">Luxury Residential Project</h1>
+            <div class="prop-meta">
+                <span>📍 Mumbai, Maharashtra</span>
+                <span>🏢 Premium Developer</span>
+                <span>🏷️ MahaRERA Registered</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sub-nav">
+        <div class="container">
+            <a href="#overview" class="active">Overview</a>
+            <a href="#pricing">Pricing & EMI</a>
+            <a href="#amenities">Amenities</a>
+            <a href="#location">Location</a>
+        </div>
+    </div>
+
+    <div class="container prop-layout">
+        <div class="prop-main">
+            <div id="overview" class="prop-section" style="padding-top: 0;">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Project" style="width: 100%; border-radius: 12px; margin-bottom: 20px;">
+                <h3>Project Overview</h3>
+                <p>Welcome to unparalleled luxury. This master-planned development features world-class architecture, stunning views, and an array of premium lifestyle amenities. Experience the pinnacle of modern living directly from the builder with zero brokerage.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; background: var(--bg-light); padding: 20px; border-radius: 8px;">
+                    <div><strong>Project Size:</strong> 5 Acres</div>
+                    <div><strong>Total Towers:</strong> 4</div>
+                    <div><strong>Possession:</strong> Dec 2026</div>
+                    <div><strong>Status:</strong> Under Construction</div>
+                </div>
+            </div>
+
+            <div id="pricing" class="prop-section">
+                <h3>Pricing & Configurations</h3>
+                <table style="width: 100%; text-align: left; border-collapse: collapse; margin-bottom: 20px;">
+                    <tr style="border-bottom: 2px solid var(--border-color); background: var(--bg-light);">
+                        <th style="padding: 12px;">Configuration</th>
+                        <th style="padding: 12px;">Carpet Area</th>
+                        <th style="padding: 12px;">Price</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 15px 12px;">2 BHK Luxury</td>
+                        <td style="padding: 15px 12px;">850 sq.ft.</td>
+                        <td style="padding: 15px 12px; font-weight: bold;">₹ 1.85 Cr*</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 15px 12px;">3 BHK Premium</td>
+                        <td style="padding: 15px 12px;">1200 sq.ft.</td>
+                        <td style="padding: 15px 12px; font-weight: bold;">₹ 2.50 Cr*</td>
+                    </tr>
+                </table>
+
+                <div class="emi-box">
+                    <h4>Interactive EMI Calculator</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Estimate your monthly payments instantly.</p>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label>Property Value (₹)</label>
+                        <input type="number" id="emiPropValue" value="18500000" class="booking-input" style="margin-bottom: 0;">
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label>Down Payment (%)</label>
+                            <input type="number" id="emiDown" value="20" class="booking-input" style="margin-bottom: 0;">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label>Interest Rate (%)</label>
+                            <input type="number" id="emiRate" value="8.5" step="0.1" class="booking-input" style="margin-bottom: 0;">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label>Tenure (Years)</label>
+                            <input type="number" id="emiTenure" value="20" class="booking-input" style="margin-bottom: 0;">
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-full" style="margin-top: 15px;" onclick="calculateEMI()">Calculate EMI</button>
+                    <div class="emi-result" id="emiResultText">Estimated EMI: ₹ 1,28,438 / month</div>
+                </div>
+            </div>
+
+            <div id="amenities" class="prop-section">
+                <h3>World-Class Amenities</h3>
+                <div class="amenity-grid">
+                    <div class="amenity-item">🏊‍♂️ Swimming Pool</div>
+                    <div class="amenity-item">🏋️‍♀️ Gymnasium</div>
+                    <div class="amenity-item">🌳 Landscaped Gardens</div>
+                    <div class="amenity-item">🎾 Tennis Court</div>
+                    <div class="amenity-item">🎮 Indoor Games</div>
+                    <div class="amenity-item">👶 Kids Play Area</div>
+                    <div class="amenity-item">🧘‍♂️ Yoga Deck</div>
+                    <div class="amenity-item">🛡️ 24/7 Security</div>
+                    <div class="amenity-item">🎬 Mini Theatre</div>
+                </div>
+            </div>
+            
+            <div id="location" class="prop-section" style="border-bottom: none;">
+                <h3>Location Advantage</h3>
+                <p>Strategically located to ensure you are never too far from your destinations. Close proximity to major highways, top educational institutions, and healthcare facilities.</p>
+                <div style="margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm);">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715891321000!5m2!1sen!2sin" width="100%" height="300" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="prop-sidebar">
+            <div class="sticky-sidebar">
+                <h4>Book Free Site Visit</h4>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Directly with Developer. No Brokerage.</p>
+                <div id="bookingFormStep">
+                    <form onsubmit="event.preventDefault(); window.startAuthFlow('sidebar');">
+                        <label style="font-size: 13px; font-weight: 600;">Date & Time</label>
+                        <input type="datetime-local" id="bDate" class="booking-input" required>
+                        <label style="font-size: 13px; font-weight: 600; display: block; margin-top: 5px;">Visit Type</label>
+                        <div style="display: flex; gap: 15px; margin-bottom: 15px; margin-top: 5px;">
+                            <label style="font-size: 14px;"><input type="radio" name="stVisit" id="vVirtual" checked> Virtual</label>
+                            <label style="font-size: 14px;"><input type="radio" name="stVisit" id="vInPerson"> In-Person</label>
+                        </div>
+                        <input type="text" id="bName" class="booking-input" placeholder="Your Name" required>
+                        <input type="email" id="bEmail" class="booking-input" placeholder="Email Address">
+                        <input type="tel" id="bPhone" class="booking-input" placeholder="Phone Number (+91...)" required>
+                        <button type="submit" class="btn btn-primary btn-full">Verify & Book</button>
+                    </form>
+                </div>
+
+                <div id="authStep" style="display:none; text-align: center;">
+                    <h4 style="color: var(--primary-color);">Verify Identity</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Please authenticate to submit your secure request.</p>
+                    <button type="button" onclick="window.loginWithGoogle()" class="btn btn-outline btn-full" style="margin-bottom: 15px;">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="G" style="width: 18px; margin-right: 8px;"> Sign in with Google
+                    </button>
+                    <div style="margin-bottom: 15px; font-size: 12px; color: #999;">OR</div>
+                    <div id="recaptcha-container" style="margin-bottom: 15px; display: flex; justify-content: center;"></div>
+                    <button type="button" onclick="window.sendPhoneOTP()" class="btn btn-primary btn-full">Send OTP to Phone</button>
+                </div>
+
+                <div id="otpStep" style="display:none; text-align: center;">
+                    <h4 style="color: var(--primary-color);">Enter OTP</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">We sent a code to your phone.</p>
+                    <input type="text" id="otpCode" class="booking-input" placeholder="6-digit code" style="text-align: center; letter-spacing: 2px; font-weight: bold;">
+                    <button type="button" onclick="window.verifyPhoneOTP()" class="btn btn-primary btn-full">Verify & Submit</button>
+                </div>
+
+                <div id="successStep" style="display:none; text-align: center; padding: 20px 0;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">✅</div>
+                    <h4 style="color: green;">Booking Confirmed!</h4>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-top: 10px;">We have securely received your details. Our advisor will reach out shortly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact" class="footer" style="margin-top: 60px;">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo" style="text-decoration: none; display: inline-block; background: white; padding: 10px; border-radius: 8px;">
+                    <img src="assets/logo_square.png" alt="CrestHive Consultancy" style="height: 65px; width: auto; object-fit: contain;">
+                </a>
+                <p class="mt-2 text-gray">Mumbai’s Finest & Leading real estate advisory firm.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>📞 +91 95940 63034</li>
+                    <li>✉️ cresthiveconsultancy@gmail.com</li>
+                </ul>
+                <div class="social-links" style="margin-top: 20px; display: flex; gap: 15px;">
+                    <a href="https://www.instagram.com/cresthiveconsultancy?igsh=dzd5aW9lZ3lwaW9h&utm_source=qr" target="_blank" style="color: white; text-decoration: none; font-size: 20px;" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/share/14bRqmc1WEP/?mibextid=wwXIfr" target="_blank" style="color: white; text-decoration: none; font-size: 20px;" title="Facebook">📘</a>
+                    <a href="https://x.com/cresthive?s=21" target="_blank" style="color: white; text-decoration: none; font-size: 20px;" title="X (Twitter)">𝕏</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js?v=4"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script>
+        function calculateEMI() {
+            const P_Total = parseFloat(document.getElementById('emiPropValue').value);
+            const downPercent = parseFloat(document.getElementById('emiDown').value);
+            const P = P_Total - (P_Total * (downPercent / 100)); 
+            const r = parseFloat(document.getElementById('emiRate').value) / 12 / 100; 
+            const n = parseFloat(document.getElementById('emiTenure').value) * 12; 
+            if(P > 0 && r > 0 && n > 0) {
+                const emi = P * r * (Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
+                document.getElementById('emiResultText').innerText = 'Estimated EMI: ₹ ' + Math.round(emi).toLocaleString('en-IN') + ' / month';
+            }
+        }
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('.prop-section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.sub-nav a').forEach(a => {
+                a.classList.remove('active');
+                if(a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
